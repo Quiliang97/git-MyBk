@@ -1,0 +1,10 @@
+{
+    "db":{
+        "user":"zgl",
+       
+        "host":"localhost",
+        "port":"27017",
+        "name":"blog"
+
+    }
+}

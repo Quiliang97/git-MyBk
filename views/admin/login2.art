@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/admin/css/login2.css">
+ 
+
+  <title>Document</title>
+</head>
+
+<body>
+
+  <p class="tip">注册了才能和志同道合的人一起互动哦！</p>
+  <div class="cont">
+    <form action="/admin/login" method="post" id="loginForm">
+    <div class="form sign-in">
+      <h2>欢迎回来</h2>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" />
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password"  />
+      </label>
+      <p class="forgot-pass">忘记密码?</p>
+      <button type="submit" class="submit">登录</button>
+     
+    </div>
+  </form>
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>新的小伙伴?</h2>
+          <p>这个梦中的世界，期待你的加入!</p>
+        </div>
+        <div class="img__text m--in">
+          <h2>已经注册了?</h2>
+          <p>直接点击登录即可进入!</p>
+        </div>
+        <div class="img__btn">
+          <span class="m--up">注册</span>
+          <span class="m--in">登录</span>
+        </div>
+      </div>
+
+      <form action="/admin/loginuser" method="post" id="loginFormUser">
+      <div class="form sign-up">
+        <h2>是时候加入进来啦！</h2>
+        <label>
+          <span>Name</span>
+          <input type="text"  name="username" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password"  />
+        </label>
+        <button type="submit" class="submit">注册</button>
+       
+      </div>
+    </form>
+
+    </div>
+  </div>
+
+  <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+  <script src="/admin/js/common.js"></script>
+  <script>
+    document.querySelector('.img__btn').addEventListener('click', function () {
+      document.querySelector('.cont').classList.toggle('s--signup');
+    });
+
+     // 为表单添加提交事件
+     $('#loginForm,#loginFormUser').on('submit',function(){
+                // 获取表单中用户输入的内容 返回一个数组
+             var result = serializeToJson($(this))
+             console.log(result);
+
+            //  如果用户没有输入内容 trim() 除去空格
+             if(result.email.trim().length == 0){
+                 alert("请输入邮件地址！")
+                //  阻止程序向下执行
+                return false;
+             }
+             if(result.password.trim().length == 0){
+                alert("请输入邮件密码！")
+                //  阻止程序向下执行
+                return false;
+             }
+
+
+             
+                // 阻止表单默认提交
+                // return false;
+            })
+  </script>
+
+</body>
+
+</html>
